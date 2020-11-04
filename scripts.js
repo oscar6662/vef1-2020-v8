@@ -75,12 +75,15 @@
 	
 	const string = function(theThing) {
 		str = theThing.target.value;
+		str = str.toLocaleUpperCase();
 		if(str == ""){
 			document.getElementById("result").innerHTML="There isn't a string to play with anymore";
 		}else{
+			let errorstring = "";
 			for(let i = 0;i<str.length;i++){
 				if(LETTERS.includes(str[i])==false){
-					document.getElementById("result").innerHTML='Þú gafst upp stafi sem ekki er hægt að kóða: '+str[i]+'. Reyndu aftur.';
+					errorstring = errorstring + str[i];
+					document.getElementById("result").innerHTML='Þú gafst upp stafi sem ekki er hægt að kóða: '+errorstring+'. Reyndu aftur.';
 				}else{
 					if(type2=='encode'){
 						document.getElementById("result").innerHTML=encode(str,n,LETTERS);
